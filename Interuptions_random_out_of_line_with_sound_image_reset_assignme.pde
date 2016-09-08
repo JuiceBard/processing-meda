@@ -1,28 +1,26 @@
-// VERSION 0.9
+// VERSION 1.0.11
 
 import processing.sound.*;
 SoundFile file;
 PImage blurSphere;
 PImage greySphere;
 
-int spacingY = 100;
+int spacingY = 20;
 int spacingX = 100;
 
 int varAngle = 10;
 
-int lineLength = 50;
-int lineMove = 0;
+int lineLength = 15;
+int lineMove = 500;
 
-float sWeight = 6;
-
-int delayTime = 1000;
+float sWeight = 16;
 
 int r;
 int g;
 int b;
 int d = 0;
 int black = 1;
-int drawCount = 50;
+int drawCount = 10;
 
 boolean colourChange = true;
 boolean brush;
@@ -34,10 +32,10 @@ float brushSize = 500;
 float brushPosX;
 float brushPosY;
 
-boolean assignment = true;
+boolean assignment = false;
 
-// color backGround = color(#000000);
-color backGround = color(232,232,232);
+color backGround = color(#000000);
+// color backGround = color(232,232,232);
 
 void setup() {
 
@@ -49,29 +47,26 @@ void setup() {
   blurSphere = loadImage("Black-Shape-Int.png");
   greySphere = loadImage("Grey-Shape-Int.png");
   smooth();
-
-
-}
-
-void draw() {
-  
   if (assignment == true){
 
     backGround = color(232,232,232);
     spacingY = 50;
-    spacingX = 100;
+    spacingX = 40;
     varAngle = 10;
     lineLength = 30;
-    lineMove = 500;
-    sWeight = 1.5;
+    lineMove = 100;
+    sWeight = 2.5;
     colourChange = false;
     brush = false;
     
   }
-  
-  
+
+}
+
+void draw() {
+
   if (d == drawCount){
-    
+        
     if (black == 1 && blackFrame == true){
         
       stroke(0);
@@ -88,9 +83,9 @@ void draw() {
     
     }
     
-    int x = 75;  
+    int x = 100;  
     
-    while (x < width){
+    while (x < width - 100){
       
       int y = 100;
       
@@ -137,7 +132,7 @@ void draw() {
 
 void keyPressed(){
   
-  if (keyCode == UP && drawCount > d){
+  /* if (keyCode == UP && drawCount > 4){
     
     drawCount -= 2;
     print("// Increased speed ", drawCount);
@@ -179,9 +174,9 @@ void keyPressed(){
     colourChange = true;
     print("colour on ");
     
-   }
+   } */
   
-  } else if(keyCode == 10) {
+  if(keyCode == 10) {
     
     noStroke();
     fill(backGround);
@@ -189,12 +184,12 @@ void keyPressed(){
   
   }
 
-}
+} 
 
-void mouseWheel(MouseEvent event) {
+/* void mouseWheel(MouseEvent event) {
   
-  brushSize = event.getCount() * 50;
-  print("// Brush size changed");
+  brushSize = map(event.getCount(),0 ,8 , 0, 500);
+  print("// Brush size changed", brushSize);
   
 }
 
@@ -205,7 +200,7 @@ void mouseClicked(){
   brushPosY = mouseY;
   print("// Mouse clicked ");
 
-}
+} */
 
 void mouseMoved(){
  if (assignment == true){
