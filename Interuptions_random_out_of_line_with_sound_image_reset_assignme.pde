@@ -1,4 +1,4 @@
-// VERSION 1.0.11
+// VERSION 1.0.12
 
 import processing.sound.*;
 SoundFile file;
@@ -20,7 +20,10 @@ int g;
 int b;
 int d = 0;
 int black = 1;
-int drawCount = 10;
+
+int drawCount = 50;
+// adjust draw speed
+
 
 boolean colourChange = true;
 boolean brush;
@@ -32,16 +35,15 @@ float brushSize = 500;
 float brushPosX;
 float brushPosY;
 
-boolean assignment = false;
+boolean assignment = true;
 
 color backGround = color(#000000);
-// color backGround = color(232,232,232);
+
 
 void setup() {
 
   size(2560,1440);
-  // background(#3498db);
-  background(backGround); 
+  
   file = new SoundFile(this, "sound.mp3");
   file.loop();
   blurSphere = loadImage("Black-Shape-Int.png");
@@ -60,7 +62,7 @@ void setup() {
     brush = false;
     
   }
-
+  background(backGround); 
 }
 
 void draw() {
